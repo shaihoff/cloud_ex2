@@ -1,0 +1,38 @@
+
+
+
+
+
+<!doctype html>
+<title>Gallery - {{ title }}</title>
+
+<script>
+
+
+</script>
+{% block body %}
+
+
+  <div align="center"><h1>{{ title }}</h1></div>
+
+
+  <div id="album_images">
+
+    {% if album_name %}
+
+    <div align="left"><h2>{{ album_name }}</h2></div>
+    </div>
+  	<form id="frm" action="http://davyx8.cloudapp.net/albums/{{album_name}}/{{user_name}}/upload" method="post" name="albumName" value={{album_name}} enctype="multipart/form-data" >
+	Select a file: <input type="file" name="img">
+  	<input type="submit" name="shai" value="pash is gey" >
+	</form>
+    {% for image in images %}
+      <div id="album_image_div">
+	{{image}}
+        <img onclick="remove_image('{{image}}')" src="https://imgallery.blob.core.windows.net/{{album_name}}/{{image}}">
+		 </div>
+    {% endfor %}
+    {% endif %}
+  </div>
+
+{% endblock %}
